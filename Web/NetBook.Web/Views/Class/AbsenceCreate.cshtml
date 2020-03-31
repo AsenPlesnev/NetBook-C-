@@ -1,0 +1,63 @@
+﻿@using NetBook.Common
+@model NetBook.Web.InputModels.Absence.AbsenceCreateInputModel
+@{
+    this.ViewData["Title"] = "Добавяне на отсъствие";
+}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12" style="margin-top: 28px">
+                            <h4 class="white-text">
+                                Добавяне на отсъствие
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-panel white">
+                    <form asp-controller="Class" asp-action="AbsenceCreate" method="post">
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <select asp-for="SubjectId" asp-items="ViewBag.SubjectNames">
+                                    <option disabled selected="selected" value="">Предмет</option>
+                                </select>
+                                <span asp-validation-for="SubjectId" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <select asp-for="StudentId" >
+                                    <option selected="selected" value="@ViewBag.StudentId">@ViewBag.StudentName</option>
+                                </select>
+                                <span asp-validation-for="StudentId" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12">
+                                <select asp-for="ClassId" >
+                                    <option  selected="selected" value="@ViewBag.ClassId">@ViewBag.ClassName</option>
+                                </select>
+                                <span asp-validation-for="ClassId" class="red-text"></span>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 34px">
+                            <div class="right-align">
+                                <button class="btn waves-effect waves-light gradient-animation" type="submit">
+                                    Запази
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <a class="waves-effect btn-flat left" asp-controller="Class" asp-action="StudentsAll" asp-route-id="@ViewBag.ClassId" style="margin-top: -20px; color: #909090"><i class="material-icons left">keyboard_arrow_left</i>Назад</a>
+    </div>
+
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

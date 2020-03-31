@@ -1,0 +1,67 @@
+﻿@using NetBook.Common
+@model NetBook.Web.Paging.PaginatedList<NetBook.Web.ViewModels.Absence.AbsenceAllViewModel>
+@{
+    this.ViewData["Title"] = "Отсъствия";
+}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12 m12 l9 xl8" style="margin-top: 28px">
+                            <h4 class="white-text">
+                                Отсъствия
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-panel white" style="overflow-x: auto;">
+                    <table class="highlight">
+                        <thead>
+                            <tr>
+                                <th>Предмет</th>
+                                <th>Ученик</th>
+                                <th>Клас</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var absence in @Model)
+                            {
+                                <tr style="cursor: default;">
+                                    <td>@absence.SubjectName</td>
+                                    <td>@absence.StudentFullName</td>
+                                    <td>@absence.ClassName</td>
+
+                                    <td>
+                                        <a asp-area="Administration" asp-controller="Absence" asp-action="Delete" asp-route-id="@absence.Id" class="indigo-text text-lighten-3 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Изтриване">
+                                            <i class="material-icons red-text ">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @{
+                        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                    }
+                    <div class="center-align">
+                        <a asp-area="Administration" asp-controller="Absence" asp-action="All"
+                           asp-route-pageNumber="@(Model.PageIndex - 1)"
+                           class="btn waves-effect waves-light gradient-animation  @prevDisabled">
+                            Предишна
+                        </a>
+                        <a asp-area="Administration" asp-controller="Absence" asp-action="All"
+                           asp-route-pageNumber="@(Model.PageIndex + 1)"
+                           class="btn waves-effect waves-light gradient-animation @nextDisabled">
+                            Следваща
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

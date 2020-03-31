@@ -1,0 +1,110 @@
+/* Login/Rgister Stylesheet*/
+
+.register-img{
+  padding-left: 0px; padding-right: 0px;
+
+  background-image: url(../images/img2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px;
+  width: 600px;
+}
+
+.login-img{
+  padding-left: 0px; padding-right: 0px;
+
+  background-image: url(../img1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px;
+  width: 600px;
+}
+
+.mattЕ {
+  color: #22313F;
+}
+
+.bigger {
+  font-size: 100px;
+}
+
+/* Клас за елементи, които да имат максимална вертикална дължина. */
+.full-height {
+    height: 100vh;
+}
+
+.full-height-child {
+    height: 100%;
+}
+
+.margin-bottom-0{
+  margin-bottom: 0px;
+}
+
+.rectangle-small {
+  z-index: 5;
+
+  position: relative;
+  top: 0%;
+  left: -11px;
+
+  /*box-shadow: 0px 0px 15px;*/
+
+  height: 100%;
+  width: 100%;
+
+  /*-ms-transform: skew(20deg); /* Прилагаме трансформацията за IE 9. */
+  /*-webkit-transform: skew(20deg); /* Прилагаме трансформацията за Chrome. */
+  /*-moz-transform: skew(20deg); /* Прилагаме трансформациятае за Firefox. */
+  /*-o-transform: skew(20deg); /* Прилагаме трансформацията за Opera. */
+  /*transform: skew(-20deg) rotate(-60deg); /* Прилагаме трансформацията за останалите браузъри. */
+  clip-path: polygon(75% 100%, 44% 100%, 0 67%, 0 40%);
+}
+
+.gradient-animation {
+
+  /* Цялостната идея се състои в това, че се създава един градиент много
+  по-голям от разберите на елемента и започва постепенно да се движи.
+  Така се създава ефект, който наподобява плавна промяна в цветовете на градиента. */
+
+  /* Създаваме се градиента и го задаваме като фон. */
+  background: linear-gradient(270deg, #3a56c8, #8863d2, #3a56c8, #8863d2);
+  background-size: 800% 800%; /* Дефинираме неговите размери. */
+
+  -ms-animation: Animation 30s ease infinite; /* Прилагаме анимацията и задаваме време за IE 9. */
+  -webkit-animation: Animation 30s ease infinite; /* Прилагаме анимацията и задаваме време за Chrome. */
+  -moz-animation: Animation 30s ease infinite; /* Прилагаме анимацията и задаваме време за Firefox. */
+  -o-animation: Animation 30s ease infinite; /* Прилагаме анимацията и задаваме време за Opera. */
+  animation: Animation 30s ease infinite; /* Прилагаме анимацията и задаваме време за останалите браузъри. */
+}
+
+/* Създаваме анимационните кадри по отделно за различните браузъри */
+@-ms-keyframes Animation {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@-webkit-keyframes Animation {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@-moz-keyframes Animation {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@-o-keyframes Animation {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@keyframes Animation {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}

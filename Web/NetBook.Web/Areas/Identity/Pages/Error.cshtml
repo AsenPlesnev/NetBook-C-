@@ -1,0 +1,40 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Грешка";
+}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12 center-align" style="margin-top: 48px">
+                            <h1 class="white-text">
+                                @ViewData["Title"]
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-panel white">
+                    <div class="center-align">
+                        <h1 class="text-danger">Грешка.</h1>
+                        <h4 class="text-danger">Възникна грешка, докато обработвахме вашата заявка.</h4>
+
+                        @if (Model.ShowRequestId)
+                        {
+                            <p>
+                                <strong>ИД на заявката:</strong> <code>@Model.RequestId</code>
+                            </p>
+                        }
+
+                        <p>
+                            Свържете се с поддръжката и изпратете ИД на заявката за отстраняване на проблема
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

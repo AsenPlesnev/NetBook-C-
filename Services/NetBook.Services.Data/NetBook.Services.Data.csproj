@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\NetBook.Data.Common\NetBook.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\NetBook.Data.Models\NetBook.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\NetBook.Data\NetBook.Data.csproj" />
+    <ProjectReference Include="..\..\NetBook.Services.Models\NetBook.Services.Models.csproj" />
+    <ProjectReference Include="..\..\NetBook.Web.InputModels\NetBook.Web.InputModels.csproj" />
+    <ProjectReference Include="..\..\Web\NetBook.Web.ViewModels\NetBook.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\NetBook.Services.Mapping\NetBook.Services.Mapping.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Mvc.ViewFeatures">
+      <HintPath>..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.viewfeatures\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

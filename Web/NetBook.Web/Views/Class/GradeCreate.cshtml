@@ -1,0 +1,77 @@
+﻿@using NetBook.Common
+@using NetBook.Data.Models.Enums
+@model NetBook.Web.InputModels.Grade.GradeCreateInputModel
+@{
+    this.ViewData["Title"] = "Добавяне на оценка";
+}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12" style="margin-top: 28px">
+                            <h4 class="white-text">
+                                Добавяне на оценка
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-panel white">
+                    <form asp-controller="Class" asp-action="GradeCreate" method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label asp-for="GradeValue" class="font-weight-bold">Оценка</label>
+                                <input type="text" id="gradeValue" asp-for="GradeValue">
+                                <span asp-validation-for="GradeValue" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <select asp-for="Term" asp-items="Html.GetEnumSelectList<Term>()">
+                                    <option disabled selected="selected" value="">Срок</option>
+                                </select>
+                                <span asp-validation-for="Term" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <select asp-for="IsTermGrade">
+                                    <option selected="selected" value="">Срочна оценка ли е?</option>
+                                    <option value="1">Да</option>
+                                    <option value="0">Не</option>
+                                </select>
+                                <span asp-validation-for="IsTermGrade" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <select asp-for="StudentId">
+                                    <option selected="selected" value="@ViewBag.StudentId">@ViewBag.StudentName</option>
+                                </select>
+                                <span asp-validation-for="StudentId" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <select asp-for="SubjectId">
+                                    <option selected="selected" value="@ViewBag.SubjectId">@ViewBag.SubjectName</option>
+                                </select>
+                                <span asp-validation-for="SubjectId" class="red-text"></span>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 34px">
+                            <div class="right-align">
+                                <button class="btn waves-effect waves-light gradient-animation" type="submit">
+                                    Запази
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <a class="waves-effect btn-flat left" asp-controller="Class" asp-action="GradesPerSubject" asp-route-id="@ViewBag.SubjectId" asp-route-studentId="@ViewBag.StudentId" style="margin-top: -20px; color: #909090"><i class="material-icons left">keyboard_arrow_left</i>Назад</a>
+    </div>
+
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

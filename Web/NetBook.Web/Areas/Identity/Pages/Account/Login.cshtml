@@ -1,0 +1,51 @@
+﻿@page
+@model LoginModel
+
+@{
+    Layout = "/Areas/Identity/Pages/LoginLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<div class="row gradient-animation full-height valign-wrapper margin-bottom-0">
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div id="login-form">
+            <div class="row">
+                <div class="card-panel white">
+                    <form method="post" asp-area="Identity" asp-page="/Account/Login">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <h5 class="center">Вход</h5>
+                        <div class="form-group mx-auto">
+                            <div class="row">
+                                <div class="input-field col s12 m4">
+                                    <label asp-for="Input.Email" class="font-weight-bold">Електронна Поща</label>
+                                    <input type="email" id="email" asp-for="Input.Email">
+                                    <span asp-validation-for="Input.Email" class="red-text"></span>
+                                </div>
+                                <div class="input-field col s12 m4">
+                                    <label asp-for="Input.Password" class="font-weight-bold">Парола</label>
+                                    <input type="password" id="password" asp-for="Input.Password">
+                                    <span asp-validation-for="Input.Password" class="red-text"></span>
+                                </div>
+                                <div class="row" style="margin-top: 34px; margin-right: 15px;">
+                                    <div class="center-align">
+                                        <button class="btn waves-effect waves-light gradient-animation" type="submit"
+                                                name="action">
+                                            Вход
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

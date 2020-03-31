@@ -1,0 +1,216 @@
+﻿@using NetBook.Data.Models.Enums
+@model NetBook.Web.ViewModels.Home.DisplayStudentViewModel
+
+@{
+    Layout = "/Views/Shared/_IndexLayout.cshtml";
+}
+
+@{
+    this.ViewData["Title"] = $"Проверка на {@Model.Student.FullName}";
+}
+
+<nav class="transparent z-depth-0">
+    <div class="nav-wrapper">
+        <div class="nav-wrapper">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="right hide-on-med-and-down">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Вход</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col s12">
+        <div>
+            <div id="welcome" style="display: none">
+                <a asp-controller="Home" asp-action="Index">
+                    <h1 class="header center white-text"><span class="red-text text-lighten-3">Net</span>Book</h1>
+                </a>
+                <p class="flow-text center white-text">Проверка на ученик</p>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="card-panel center">
+                                <ul class="collection">
+                                    <li>
+                                        <p>
+                                            <b class="title">@Model.Student.FullName</b> <br />
+                                            @Model.Student.PIN <br />
+                                            @Model.Student.Municipality <br />
+                                            @Model.School.Name, @Model.School.Municipality
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-panel center" style="overflow-x: auto;">
+                                <table class="highlight">
+                                    <thead>
+                                    <tr>
+                                        <th>№</th>
+                                        <th>Учебен предмет</th>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                I Срок
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                Срочна Оценка
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                II Срок
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                Срочна Оценка
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                Годишна Оценка
+                                            </p>
+                                        </th>
+                                        <th>Общo отсъствия</th>
+                                        <th>Общo забележки</th>
+                                        <th>Общ хорариум</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var subject in @Model.GradesForSubject)
+                                    {
+                                        <tr style="cursor: default;">
+                                            <td>@(Model.SubjectIndex++)</td>
+                                            <td>@subject.Subject.Subject.Name</td>
+                                            <td class="center">
+                                                @string.Join(", ", subject.FirstTermGrades)
+                                            </td>
+                                            <td class="center">
+                                                @subject.FirstTermGrade
+                                            </td>
+                                            <td class="center">
+                                                @string.Join(", ", subject.SecondTermGrades)
+                                            </td>
+                                            <td class="center">
+                                                @subject.SecondTermGrade
+                                            </td>
+                                            @if (subject.FirstTermGrade != "Няма" && subject.SecondTermGrade != "Няма")
+                                            {
+                                                <td class="center">@((int.Parse(subject.FirstTermGrade) + int.Parse(subject.SecondTermGrade)) / 2)</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="center">Няма</td>
+                                            }
+                                            <td class=center>@Model.Absences.Count(x => x.SubjectId == @subject.Subject.Id)</td>
+                                            <td class=center>@Model.Remarks.Count(x => x.SubjectId == @subject.Subject.Id)</td>
+                                            <td class=center>@subject.Subject.Workload</td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-panel center" style="overflow-x: auto;">
+                                <table class="highlight">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                Учебен премет
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                Дата
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                Класен ръководител
+                                            </p>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var absence in @Model.Absences)
+                                    {
+                                        <tr style="cursor: default;">
+                                            <td>@absence.Subject.Subject.Name</td>
+                                            <td>@absence.CreatedOn.ToString("dd/MM/yyyy")</td>
+                                            <td>@Model.Student.Class.ClassTeacher.FullName</td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td>Общо отсъствъия</td>
+                                        <td>@Model.Absences.Count</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-panel center" style="overflow-x: auto;">
+                                <table class="highlight">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                Текст
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                Учебен премет
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                Дата
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <p style="font-size: 14px;">
+                                                Класен ръководител
+                                            </p>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var remark in @Model.Remarks)
+                                    {
+                                        <tr style="cursor: default;">
+                                            <td>@remark.Text</td>
+                                            <td>@remark.Subject.Subject.Name</td>
+                                            <td>@remark.CreatedOn.ToString("dd/MM/yyyy")</td>
+                                            <td>@Model.Student.Class.ClassTeacher.FullName</td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td>Общо забележки</td>
+                                        <td>@Model.Remarks.Count</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

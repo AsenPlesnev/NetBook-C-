@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\NetBook.Data.Models\NetBook.Data.Models.csproj" />
+    <ProjectReference Include="..\NetBook.Common\NetBook.Common.csproj" />
+    <ProjectReference Include="..\NetBook.Services.Models\NetBook.Services.Models.csproj" />
+    <ProjectReference Include="..\Services\NetBook.Services.Mapping\NetBook.Services.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>

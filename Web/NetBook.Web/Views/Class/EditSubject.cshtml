@@ -1,0 +1,62 @@
+﻿@model NetBook.Web.InputModels.Class.SubjectInClassEditInputModel
+
+@{
+    this.ViewData["Title"] = "Редактиране на предмет";
+}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12" style="margin-top: 28px">
+                            <h4 class="white-text">
+                                Редактиране на учебен предмет
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-panel white">
+                    <form asp-controller="Class" asp-action="EditSubject" method="post">
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <select asp-for="SubjectId">
+                                    <option selected="selected" value="@Model.SubjectId">@ViewBag.SubjectName</option>
+                                </select>
+                                <span asp-validation-for="SubjectId" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <select asp-for="ClassId">
+                                    <option selected="selected" value="@Model.ClassId">@ViewBag.ClassName</option>
+                                </select>
+                                <span asp-validation-for="ClassId" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12">
+                                <label asp-for="Workload" class="font-weight-bold">Хорариум</label>
+                                <input type="number" min="1" id="workload" asp-for="Workload">
+                                <span asp-validation-for="Workload" class="red-text"></span>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 34px">
+                            <div class="right-align">
+                                <button class="btn waves-effect waves-light gradient-animation" type="submit">
+                                    Запази
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <a class="waves-effect btn-flat left" asp-controller="Class" asp-action="SubjectsAll" asp-route-id="@Model.ClassId" style="margin-top: -20px; color: #909090"><i class="material-icons left">keyboard_arrow_left</i>Назад</a>
+    </div>
+
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

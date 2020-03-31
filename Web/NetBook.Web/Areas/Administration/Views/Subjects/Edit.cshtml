@@ -1,0 +1,51 @@
+﻿@using NetBook.Common
+@model NetBook.Web.InputModels.Subject.SubjectEditInputModel
+@{
+    this.ViewData["Title"] = "Редактиране на предмет";
+}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12" style="margin-top: 28px">
+                            <h4 class="white-text">
+                                Редактиране на учебен предмет
+                                <a asp-area="Administration" asp-controller="Subjects" asp-action="Create" class="waves-effect waves-light btn gradient-animation"><i class="material-icons left">add</i>Нов<span class="hide-on-large-only hide-on-small-only"> предмет</span></a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-panel white">
+                    <form asp-area="Administration" asp-controller="Subjects" asp-action="Edit" method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label asp-for="@Model.Name" class="font-weight-bold">Име на предмета</label>
+                                <input type="text" id="name" asp-for="@Model.Name">
+                                <span asp-validation-for="@Model.Name" class="red-text"></span>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 34px">
+                            <div class="right-align">
+                                <button class="btn waves-effect waves-light gradient-animation" type="submit">
+                                    Запази
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <a class="waves-effect btn-flat left" asp-area="Administration" asp-controller="Subjects" asp-action="All" style="margin-top: -20px; color: #909090"><i class="material-icons left">keyboard_arrow_left</i>Назад</a>
+    </div>
+
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,28 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Забранен Достъп";
+}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12 center-align" style="margin-top: 48px">
+                            <h1 class="white-text">
+                                @ViewData["Title"]
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-panel white">
+                    <div class="center-align">
+                        <h5>Нямате достъп до тази страница!</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

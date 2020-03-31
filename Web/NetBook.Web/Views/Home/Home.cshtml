@@ -1,0 +1,130 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model NetBook.Web.ViewModels.SchoolInputModel
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    this.ViewData["Title"] = "Начало";
+}
+
+<header>
+    <ul id="nav-mobile" class="side-nav fixed gradient-animation" style="transform: translateX(0px);">
+        <li class="hide-on-small-only">
+            <div class="right hide-on-med-and-down" style="margin-top: 26px; margin-right: 19px; position: relative; z-index: 1">
+                <a href="#toogle" onclick="closeNav()">
+                    <i class="material-icons">format_indent_decrease</i>
+                </a>
+            </div>
+            <div class="userView">
+                @if (this.User.Identity.IsAuthenticated)
+                {
+                    <a style="cursor: default;"><span class="white-text name" style="margin-top: 0">@(User.FindFirst("FullName").Value)</span></a>
+                }
+                <a style="cursor: default;"><span class="white-text email">@this.User.Identity.Name</span></a>
+            </div>
+        </li>
+        <li class="no-padding">
+            <ul>
+                <li>
+                    <a href="#"><i class="material-icons">person</i>Профил</a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons">school</i>Училище</a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons">people</i>Учители</a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons">group_work</i>Учебни предмети</a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons">people</i>Ученици</a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons">class</i>Класове</a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons">archive</i>Архивирани</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="waves-effect"
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+               style="text-transform: uppercase; bottom: 60px; position: fixed; width: 100%;text-align: center; background-color: rgba(255,255,255,.05); font-size: 18px">Изход</a>
+
+            <form id="logout-form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"></form>
+        </li>
+    </ul>
+</header>
+
+
+
+<div>
+    <!-- Show Side Bar -->
+    <a onclick="openNav()" class="waves-effect waves-light btn hide-on-med-and-down app-light" id="show-nav" style="margin-top: 20px; margin-left: 20px; padding-left: 10px; padding-right: 10px">
+        <i class="material-icons">format_indent_increase</i>
+    </a>
+</div>
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12" style="margin-top: 28px">
+                            <h4 class="white-text" style="display: inline; position: relative; bottom: 16px">Училище</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-panel white">
+                    <form method="post" class="w-50 mx-auto">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label asp-for="SchoolName" class="font-weight-bold">Име на училището</label>
+                                <input type="email" id="email" asp-for="SchoolName">
+                                <span asp-validation-for="SchoolName" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <label asp-for="Town" class="font-weight-bold">Град</label>
+                                <input type="text" id="town" asp-for="Town">
+                                <span asp-validation-for="Town" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <label asp-for="Municipality" class="font-weight-bold">Община</label>
+                                <input type="text" id="municipality" asp-for="Municipality">
+                                <span asp-validation-for="Municipality" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <label asp-for="Region" class="font-weight-bold">Район</label>
+                                <input type="text" id="region" asp-for="Region">
+                                <span asp-validation-for="Region" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <label asp-for="Area" class="font-weight-bold">Област</label>
+                                <input type="text" id="area" asp-for="Area">
+                                <span asp-validation-for="Area" class="red-text"></span>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 34px">
+                            <div class="right-align">
+                                <button class="btn waves-effect waves-light gradient-animation" type="submit">
+                                    Запази
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

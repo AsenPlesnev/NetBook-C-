@@ -1,0 +1,63 @@
+﻿@model NetBook.Web.InputModels.Home.HomeInputModel
+
+@{
+    Layout = "/Views/Shared/_IndexLayout.cshtml";
+}
+
+@{
+    this.ViewData["Title"] = "Начало";
+}
+
+<nav class="transparent z-depth-0">
+    <div class="nav-wrapper">
+        <div class="nav-wrapper">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="right hide-on-med-and-down">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Вход</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col s12">
+        <div class="valign">
+            <div id="welcomeIndex" style="display: none">
+                <h1 class="header center white-text"><span class="red-text text-lighten-3">Net</span>Book</h1>
+                <p class="flow-text center white-text">Проверка на оценките на ученика</p>
+
+                <form asp-controller="Home" asp-action="Index" method="post">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="input-field col s12 m4 push-m4">
+                                <label asp-for="@Model.PIN" class="font-weight-bold">ЕГН</label>
+                                <input asp-for="@Model.PIN" class="form-control" type="text" placeholder="Въведете ЕГН на ученика..."/>
+                                <span asp-validation-for="@Model.PIN" class="yellow-text text-accent-4 font-weight-bold"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="center">
+                        <button id="next" type="submit"
+                                class="button-total button-3 button-3e icon-arrow-right red lighten-3 white-text">
+                            Проверка
+                        </button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

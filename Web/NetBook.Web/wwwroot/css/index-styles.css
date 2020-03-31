@@ -1,0 +1,223 @@
+/* Index Stylesheet */
+
+.body {
+    z-index: 10;
+    position: relative;
+}
+
+.small-text {
+    margin-top: 2px;
+    font-size: 12px;
+}
+
+.valign {
+    margin: 0px;
+    padding:0px;
+    float: left;
+    width:100%;
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    left:50%;
+}
+
+/* General button style (reset) */
+.button-total {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 25px 80px;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.button-total:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.button-3e {
+    padding: 25px 120px 25px 60px;
+    overflow: hidden;
+}
+
+.button-3e:before {
+    left: auto;
+    right: 10px;
+    z-index: 2;
+}
+
+.button-3e:after {
+    width: 30%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    z-index: 1;
+    right: 0;
+    top: 0;
+    margin: -5px 0 0 -5px;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform-origin: 0 0;
+    -moz-transform: rotate(-20deg);
+    -ms-transform-origin: 0 0;
+    -ms-transform: rotate(-20deg);
+    transform-origin: 0 0;
+    transform: rotate(-20deg);
+}
+
+.button-3e:hover:after {
+    width: 40%;
+}
+
+.matt {
+    background-color: #22313F;
+}
+
+.giant {
+    position: relative;
+    z-index: 2;
+
+    background-color: #22313F;
+    width: 100%;
+    height: auto;
+
+}
+
+.rectangle {
+    z-index: 1;
+
+    position: fixed;
+    top: -80%;
+    left: 40%;
+
+    box-shadow: 0px 0px 15px;
+
+    height: 300vh;
+    width: 50vh;
+
+    -ms-transform: skew(20deg); /* Прилагаме трансформацията за IE 9. */
+    -webkit-transform: skew(20deg); /* Прилагаме трансформацията за Chrome. */
+    -moz-transform: skew(20deg); /* Прилагаме трансформациятае за Firefox. */
+    -o-transform: skew(20deg); /* Прилагаме трансформацията за Opera. */
+    transform: skew(20deg); /* Прилагаме трансформацията за останалите браузъри. */
+}
+
+.rectangle-small {
+    z-index: 1;
+
+    position: fixed;
+    top: -80%;
+    left: 10%;
+
+    box-shadow: 0px 0px 15px;
+
+    height: 300vh;
+    width: 20vh;
+
+    -ms-transform: skew(20deg); /* Прилагаме трансформацията за IE 9. */
+    -webkit-transform: skew(20deg); /* Прилагаме трансформацията за Chrome. */
+    -moz-transform: skew(20deg); /* Прилагаме трансформациятае за Firefox. */
+    -o-transform: skew(20deg); /* Прилагаме трансформацията за Opera. */
+    transform: skew(20deg); /* Прилагаме трансформацията за останалите браузъри. */
+}
+
+.bigger {
+    font-size: 100px;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0px;
+}
+
+.gradient-animation {
+
+    /* Цялостната идея се състои в това, че се създава един градиент много
+    по-голям от разберите на елемента и започва постепенно да се движи.
+    Така се създава ефект, който наподобява плавна промяна в цветовете на градиента. */
+
+    /* Създаваме се градиента и го задаваме като фон. */
+    background: linear-gradient(270deg, #3a56c8, #8863d2, #3a56c8, #8863d2);
+    background-size: 800% 800%; /* Дефинираме неговите размери. */
+
+    -ms-animation: Animation 30s ease infinite; /* Прилагаме анимацията и задаваме време за IE 9. */
+    -webkit-animation: Animation 30s ease infinite; /* Прилагаме анимацията и задаваме време за Chrome. */
+    -moz-animation: Animation 30s ease infinite; /* Прилагаме анимацията и задаваме време за Firefox. */
+    -o-animation: Animation 30s ease infinite; /* Прилагаме анимацията и задаваме време за Opera. */
+    animation: Animation 30s ease infinite; /* Прилагаме анимацията и задаваме време за останалите браузъри. */
+}
+
+/* Създаваме анимационните кадри по отделно за различните браузъри */
+@-ms-keyframes Animation {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-webkit-keyframes Animation {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes Animation {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-o-keyframes Animation {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes Animation {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}

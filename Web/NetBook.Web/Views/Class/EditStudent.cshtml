@@ -1,0 +1,95 @@
+﻿@using NetBook.Common
+@model NetBook.Web.InputModels.Student.StudentEditInputModel
+@{
+    this.ViewData["Title"] = "Редактиране на ученик";
+}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12" style="margin-top: 28px">
+                            <h4 class="white-text">
+                                Редактиране на ученик
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-panel white">
+                    <form  asp-controller="Class" asp-action="EditStudent" method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label asp-for="@Model.FullName" class="font-weight-bold">Име на ученика</label>
+                                <input type="text" id="fullName" asp-for="@Model.FullName">
+                                <span asp-validation-for="@Model.FullName" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12">
+                                <select asp-for="ClassId" asp-items="ViewBag.StudentClass">
+                                    <option selected="selected" value="@ViewBag.ClassId">@ViewBag.ClassName</option>
+                                </select>
+                            </div>
+                            <div class="input-field col s12 m4">
+                                <label asp-for="@Model.PIN" class="font-weight-bold">ЕГН на ученика</label>
+                                <input type="text" id="pin" asp-for="@Model.PIN">
+                                <span asp-validation-for="@Model.PIN" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m4">
+                                <label asp-for="@Model.Citizenship" class="font-weight-bold">Гражданство</label>
+                                <input type="text" id="citizenship" asp-for="@Model.Citizenship">
+                                <span asp-validation-for="@Model.Citizenship" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m4">
+                                <label asp-for="@Model.DateOfBirth" class="font-weight-bold">Рождена дата</label>
+                                <input type="text" id="dateOfBirth" class="datepicker" asp-for="@Model.DateOfBirth">
+                                <span asp-validation-for="@Model.DateOfBirth" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12">
+                                <label asp-for="@Model.Address" class="font-weight-bold">Адрес</label>
+                                <input type="text" id="address" asp-for="@Model.Address">
+                                <span asp-validation-for="@Model.Address" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m3">
+                                <label asp-for="@Model.PhoneNumber" class="font-weight-bold">Телефон</label>
+                                <input type="text" id="phone" asp-for="@Model.PhoneNumber">
+                                <span asp-validation-for="@Model.PhoneNumber" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m3">
+                                <label asp-for="@Model.Town" class="font-weight-bold">Град</label>
+                                <input type="text" id="town" asp-for="@Model.Town">
+                                <span asp-validation-for="@Model.Town" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m3">
+                                <label asp-for="@Model.Municipality" class="font-weight-bold">Община</label>
+                                <input type="text" id="municipality" asp-for="@Model.Municipality">
+                                <span asp-validation-for="@Model.Municipality" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m3">
+                                <label asp-for="@Model.Region" class="font-weight-bold">Област</label>
+                                <input type="text" id="region" asp-for="@Model.Region">
+                                <span asp-validation-for="@Model.Region" class="red-text"></span>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 34px">
+                            <div class="right-align">
+                                <button class="btn waves-effect waves-light gradient-animation" type="submit">
+                                    Запази
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <a class="waves-effect btn-flat left" asp-controller="Class" asp-action="StudentsAll" asp-route-id="@ViewBag.ClassId" style="margin-top: -20px; color: #909090"><i class="material-icons left">keyboard_arrow_left</i>Назад</a>
+    </div>
+
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

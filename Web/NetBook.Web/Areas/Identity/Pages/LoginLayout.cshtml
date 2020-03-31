@@ -1,0 +1,46 @@
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@this.ViewData["Title"] - NetBook</title>
+
+    <environment names="Development">
+        <link href="~/lib/materialize/dist/css/materialize.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/index-styles.css" rel="stylesheet" asp-append-version="true" media="screen,projection" />
+        <link href="~/css/login-styles.css" rel="stylesheet" asp-append-version="true" media="screen,projection" />
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/lib/materialize/dist/css/materialize.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/index-styles.css" rel="stylesheet" asp-append-version="true" media="screen,projection" />
+        <link href="~/css/login-styles.css" rel="stylesheet" asp-append-version="true" media="screen,projection" />
+    </environment>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @Html.Raw(JavaScriptSnippet.FullScript)
+</head>
+<body class="gradient-animation" style="overflow-x:hidden;">
+
+    @this.RenderBody()
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/lib/materialize/dist/js/materialize.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/lib/materialize/dist/js/materialize.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @this.RenderSection("Scripts", required: false)
+</body>
+</html>

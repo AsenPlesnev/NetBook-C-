@@ -1,0 +1,66 @@
+﻿@page
+@model HomeModel
+
+@{
+    this.ViewData["Title"] = "Начало";
+}
+
+    <main id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="title" style="position: relative">
+                        <div class="row" id="white">
+                            <div class="col s12" style="margin-top: 28px">
+                                <h4 class="white-text" style="display: inline; position: relative; bottom: 16px">Училище</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-panel white">
+                        <form method="post" class="w-50 mx-auto">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <label asp-for="Input.SchoolName" class="font-weight-bold">Име на училището</label>
+                                    <input type="text" id="schoolName" asp-for="Input.SchoolName">
+                                    <span asp-validation-for="Input.SchoolName" class="red-text"></span>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <label asp-for="Input.Town" class="font-weight-bold">Град</label>
+                                    <input type="text" id="town" asp-for="Input.Town">
+                                    <span asp-validation-for="Input.Town" class="red-text"></span>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <label asp-for="Input.Municipality" class="font-weight-bold">Община</label>
+                                    <input type="text" id="municipality" asp-for="Input.Municipality">
+                                    <span asp-validation-for="Input.Municipality" class="red-text"></span>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <label asp-for="Input.Region" class="font-weight-bold">Район</label>
+                                    <input type="text" id="region" asp-for="Input.Region">
+                                    <span asp-validation-for="Input.Region" class="red-text"></span>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <label asp-for="Input.Area" class="font-weight-bold">Област</label>
+                                    <input type="text" id="area" asp-for="Input.Area">
+                                    <span asp-validation-for="Input.Area" class="red-text"></span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 34px">
+                                <div class="right-align">
+                                    <button class="btn waves-effect waves-light gradient-animation" type="submit">
+                                        Запази
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

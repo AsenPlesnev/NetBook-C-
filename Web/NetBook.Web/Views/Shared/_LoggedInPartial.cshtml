@@ -1,0 +1,67 @@
+﻿@using NetBook.Common
+<header>
+    <ul id="nav-mobile" class="side-nav fixed gradient-animation" style="transform: translateX(0px);">
+        <li class="hide-on-small-only">
+            <div class="right hide-on-med-and-down" style="margin-top: 26px; margin-right: 19px; position: relative; z-index: 1">
+                <a href="#toogle" onclick="closeNav()">
+                    <i class="material-icons">format_indent_decrease</i>
+                </a>
+            </div>
+            <div class="userView">
+                @if (this.User.Identity.IsAuthenticated)
+                {
+                    <a style="cursor: default;"><span class="white-text name" style="margin-top: 0">@(User.FindFirst("FullName").Value)</span></a>
+                }
+                <a style="cursor: default;"><span class="white-text email">@this.User.Identity.Name</span></a>
+            </div>
+        </li>
+        <li class="no-padding">
+            <ul>
+                <li>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index"><i class="material-icons">person</i>Профил</a>
+                </li>
+                @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) && this.User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        <a asp-area="Identity" asp-page="/Account/Home"><i class="material-icons">school</i>Училище</a>
+                    </li>
+                    <li>
+                        <a asp-area="Administration" asp-controller="User" asp-action="All"><i class="material-icons">people</i>Потребители</a>
+                    </li>
+                    <li>
+                        <a asp-area="Administration" asp-controller="Subjects" asp-action="All"><i class="material-icons">group_work</i>Учебни предмети</a>
+                    </li>
+                    <li>
+                        <a asp-area="Administration" asp-controller="Students" asp-action="All"><i class="material-icons">people</i>Ученици</a>
+                    </li>
+                    <li>
+                        <a asp-area="Administration" asp-controller="Grade" asp-action="All"><i class="material-icons">star_half</i>Оценки</a>
+                    </li>
+                    <li>
+                        <a asp-area="Administration" asp-controller="Absence" asp-action="All"><i class="material-icons">description</i>Отсъствия</a>
+                    </li>
+                    <li>
+                        <a asp-area="Administration" asp-controller="Remark" asp-action="All"><i class="material-icons">gavel</i>Забележки</a>
+                    </li>
+                }
+                <li>
+                    <a asp-controller="Class" asp-action="All"><i class="material-icons">class</i>Класове</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="waves-effect"
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+               style="text-transform: uppercase; bottom: 60px; position: fixed; width: 100%;text-align: center; background-color: rgba(255,255,255,.05); font-size: 18px">Изход</a>
+
+            <form id="logout-form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"></form>
+        </li>
+    </ul>
+</header>
+
+<div>
+    <!-- Show Side Bar -->
+    <a onclick="openNav()" class="waves-effect waves-light btn hide-on-med-and-down app-light" id="show-nav" style="margin-top: 20px; margin-left: 20px; padding-left: 10px; padding-right: 10px">
+        <i class="material-icons">format_indent_increase</i>
+    </a>
+</div>

@@ -1,0 +1,72 @@
+﻿@using NetBook.Data.Models.Enums
+@model NetBook.Web.InputModels.Class.ClassEditInputModel
+
+@{
+    this.ViewData["Title"] = "Редактиране на клас";
+}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12" style="margin-top: 28px">
+                            <h4 class="white-text">
+                                Редактиране на клас
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-panel white">
+                    <form asp-controller="Class" asp-action="Edit" method="post">
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <select asp-for="ClassNumber" asp-items="@ViewBag.ClassNumbers">
+                                    <option disabled selected="selected" value="@ViewBag.ClassNumber">@ViewBag.ClassNumber</option>
+                                </select>
+                                <span asp-validation-for="ClassNumber" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <select asp-for="ClassLetter" asp-items="Html.GetEnumSelectList<ClassLetter>()">
+                                    <option disabled selected="selected" value="">@ViewBag.ClassLetter</option>
+                                </select>
+                                <span asp-validation-for="ClassLetter" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12">
+                                <select asp-for="ClassTeacherId">
+                                    <option selected="selected" value="@ViewBag.ClassTeacherId">@ViewBag.ClassTeacherName</option>
+                                </select>
+                                <span asp-validation-for="ClassTeacherId" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <label asp-for="SchoolYearStart" class="font-weight-bold">Учебна година начало</label>
+                                <input type="number" id="schoolYearStart" asp-for="SchoolYearStart">
+                                <span asp-validation-for="SchoolYearStart" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <label asp-for="SchoolYearEnd" class="font-weight-bold">Учебна година край</label>
+                                <input type="number" id="schoolYearEnd" asp-for="SchoolYearEnd">
+                                <span asp-validation-for="SchoolYearEnd" class="red-text"></span>
+                            </div>
+                            <div class="right-align">
+                                <button class="btn waves-effect waves-light gradient-animation" type="submit">
+                                    Запази
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <a class="waves-effect btn-flat left" asp-controller="Class" asp-action="All" style="margin-top: -20px; color: #909090"><i class="material-icons left">keyboard_arrow_left</i>Назад</a>
+    </div>
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

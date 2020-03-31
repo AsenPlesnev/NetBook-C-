@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-NetBook-BBB373B5-EF3F-4DBB-B8AA-7152CEC275BF</UserSecretsId>
+	<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+    <ApplicationInsightsResourceId>/subscriptions/44e807c3-3cf5-4a29-95bb-a423059a7e07/resourcegroups/NetBookAppGroup/providers/microsoft.insights/components/netbookapp</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/44e807c3-3cf5-4a29-95bb-a423059a7e07/resourcegroups/NetBookAppGroup/providers/microsoft.insights/components/netbookapp</ApplicationInsightsAnnotationResourceId>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.48" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\NetBook.Data.Models\NetBook.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\NetBook.Data\NetBook.Data.csproj" />
+    <ProjectReference Include="..\..\NetBook.Web.InputModels\NetBook.Web.InputModels.csproj" />
+    <ProjectReference Include="..\..\Services\NetBook.Services.Data\NetBook.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\NetBook.Services.Mapping\NetBook.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\NetBook.Services.Messaging\NetBook.Services.Messaging.csproj" />
+    <ProjectReference Include="..\..\Services\NetBook.Services\NetBook.Services.csproj" />
+    <ProjectReference Include="..\NetBook.Web.Infrastructure\NetBook.Web.Infrastructure.csproj" />
+    <ProjectReference Include="..\NetBook.Web.ViewModels\NetBook.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,60 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Профил";
+}
+
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="title" style="position: relative">
+                    <div class="row" id="white">
+                        <div class="col s12" style="margin-top: 28px">
+                            <h4 class="white-text" style="display: inline; position: relative; bottom: 16px">Профил</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-panel white">
+                    <form method="post" class="w-50 mx-auto">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label asp-for="Username" class="font-weight-bold">Потребителско име</label>
+                                <input type="text" disabled id="username" asp-for="Username">
+                                <span asp-validation-for="Username" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <label asp-for="Input.Email" class="font-weight-bold">Електронна поща</label>
+                                <input type="email" id="email" asp-for="Input.Email">
+                                <span asp-validation-for="Input.Email" class="red-text"></span>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <label asp-for="Input.PhoneNumber" class="font-weight-bold">Телефон</label>
+                                <input type="text" id="phoneNumber" asp-for="Input.PhoneNumber">
+                                <span asp-validation-for="Input.PhoneNumber" class="red-text"></span>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 34px">
+                            <div class="right-align">
+                                <button asp-area="Identity" asp-page="/Account/Manage/ChangePassword" class="btn waves-effect waves-light gradient-animation" type="">
+                                    Смяна на паролата
+                                </button>
+                                
+                                <button class="btn waves-effect waves-light gradient-animation" type="submit">
+                                    Запази
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
